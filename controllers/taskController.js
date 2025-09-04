@@ -23,6 +23,7 @@ const reassignTask = async (req, res) => {
     const task = await Task.findById(taskId);
     if (!task) return res.status(404).json({ message: "Task not found" });
     task.assignee = newAssignee;
+    task.assignedBy = req.user._id;
     await task.save();
     res.json(task);
   } catch (err) {

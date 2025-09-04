@@ -5,8 +5,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./utils/db");
 
 const taskRoutes = require("./routes/taskRoutes");
-// const userRoutes = require("./routes/userRoutes"); // optional if you want user CRUD
-
+const userRoutes = require("./routes/userRoutes"); 
 dotenv.config();
 connectDB();
 
@@ -15,8 +14,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/tasks", taskRoutes);
-// app.use("/api/users", userRoutes); // optional
+app.use("/tasks", taskRoutes);
+app.use("/users", userRoutes); 
 
 app.get("/", (req, res) => {
   res.send("✅ Task Management Backend Running");
