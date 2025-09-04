@@ -18,7 +18,7 @@ app.use("/tasks", taskRoutes);
 app.use("/users", userRoutes); 
 
 app.get("/", (req, res) => {
-  res.send("✅ Task Management Backend Running");
+  res.send("Task Management Backend Running");
 });
 
 module.exports = app;

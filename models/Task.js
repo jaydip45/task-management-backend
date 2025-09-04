@@ -17,7 +17,9 @@ const taskSchema = new mongoose.Schema({
     progressComments: [{ message: String, date: { type: Date, default: Date.now } }],
 }, { timestamps: true });
 
-// Virtual field for timeTaken
+taskSchema.set("toJSON", { virtuals: true });
+taskSchema.set("toObject", { virtuals: true });
+
 taskSchema.virtual("timeTaken").get(function () {
     if (this.actualDeliveryDate && this.assignedDate) {
         const diff = this.actualDeliveryDate - this.assignedDate;
